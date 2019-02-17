@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Container from "./Containter";
+import Filler from "./Filler";
+import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+// since there is no state to be responsible make this
+// this component stateless
 
+const App = () => {
+  const TriggerText = "Open Form";
+
+  const onSubmit = evt => {
+    evt.preventDefault();
+    console.log("Name value: ", evt.target.name.value);
+    console.log("Email value: ", evt.target.email.value);
+  };
+
+  return (
+    <div className="App">
+      <Filler />
+      <Container triggerText={TriggerText} onSubmit={onSubmit} />
+      <Filler />
+    </div>
+  );
+};
 export default App;
+
+// 1. Have general setup for the apps
+// 2. render the text that will show up ( small stateless component)
+// 3. Have general setup for container
+// 4. setup modal
